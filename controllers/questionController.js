@@ -112,10 +112,10 @@ class questionController {
 
   static edit(req, res) {
     let questionId = req.params.questionId
-    let { title, body } = req.body
+    let { title, body, tags } = req.body
     let updatedAt = new Date()
 
-    Question.findByIdAndUpdate({ _id: questionId }, { title, body, updatedAt })
+    Question.findByIdAndUpdate({ _id: questionId }, { title, body, updatedAt, tags })
       .then(question => {
         res.status(200).json({ question, message: "success edit question" })
       })
